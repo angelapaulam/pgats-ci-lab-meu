@@ -21,7 +21,7 @@ steps:
   - name: Instalando dependências
     run: yarn
 
-  - name:Instalando Playwright
+  - name: Instalando Playwright
     run: yarn playwright install
 
   - name: Executando Testes E2E
