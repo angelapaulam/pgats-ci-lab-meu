@@ -1,4 +1,4 @@
-name: 'Execução Manual teste2'
+name: 'Execução Agendada'
 
 on:
   schedule:
