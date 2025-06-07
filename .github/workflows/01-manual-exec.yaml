@@ -16,21 +16,15 @@ jobs:
 
       - name: Instalando Yarn
         run: npm install -g yarn
-
-      - name: Entrando na pasta do projeto
-        run: cd pgats-ci-lab-trabalho-final
-
+        
       - name: Instalando dependências
-        run: 
-          cd pgats-ci-lab-trabalho-final
-          yarn
+        run: yarn
+        working-directory: pgats-ci-lab-trabalho-final
 
       - name: Instalando Playwright
-        run: 
-          cd pgats-ci-lab-trabalho-final
-          yarn playwright install
+        run: yarn playwright install
+        working-directory: pgats-ci-lab-trabalho-final
 
       - name: Executando Testes E2E
-        run: 
-          cd pgats-ci-lab-trabalho-final
-          yarn run e2e
+        run: yarn run e2e
+        working-directory: pgats-ci-lab-trabalho-final
