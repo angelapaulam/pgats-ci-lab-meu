@@ -1,4 +1,4 @@
-name: 'Execução Manual teste'
+name: 'Execução Manual Trabalho-Final'
 
 on:
   workflow_dispatch:
@@ -17,11 +17,20 @@ jobs:
       - name: Instalando Yarn
         run: npm install -g yarn
 
+      - name: Entrando na pasta do projeto
+        run: cd pgats-ci-lab-trabalho-final
+
       - name: Instalando dependências
-        run: yarn
+        run: 
+          cd pgats-ci-lab-trabalho-final
+          yarn
 
       - name: Instalando Playwright
-        run: yarn playwright install
+        run: 
+          cd pgats-ci-lab-trabalho-final
+          yarn playwright install
 
       - name: Executando Testes E2E
-        run: yarn run e2e
+        run: 
+          cd pgats-ci-lab-trabalho-final
+          yarn run e2e
