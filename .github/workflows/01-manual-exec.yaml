@@ -1,10 +1,10 @@
-name: 'Execução Manual Trabalho-Final'
+name: Executar Testes JS
 
 on:
   workflow_dispatch:
 
 jobs:
-  e2e-tests:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,17 +14,6 @@ jobs:
         with:
           node-version: 22.x
 
-      - name: Instalando Yarn
-        run: npm install -g yarn
-        
-      - name: Instalando dependências
-        run: yarn
-        working-directory: pgats-ci-lab-trabalho-final
-
-      - name: Instalando Playwright
-        run: yarn playwright install
-        working-directory: pgats-ci-lab-trabalho-final
-
-      - name: Executando Testes E2E
-        run: yarn run e2e
-        working-directory: pgats-ci-lab-trabalho-final
+      - name: Executando script de testes
+        run: node index.js
+        working-directory: minha-pgats-aprogramacao-js/testes
