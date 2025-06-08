@@ -1,32 +1,36 @@
-name: Rodar Testes de Outro Repositório
+name: 'Execução Manual Trabalho-Final'
 
 on:
   workflow_dispatch:
 
 jobs:
-  executar-testes:
+  e2e-tests:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout do repositório atual (pgats-ci-lab-meu)
-      - name: Checkout do repositório principal
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Checkout do repositório com os testes (minha-pgats-aprogramacao-js)
-      - name: Checkout do repositório de testes
-        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          repository: posautomacao/minha-pgats-aprogramacao-js
-          path: minha-pgats-aprogramacao-js
-          
+          node-version: 22.x
+
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      - name: Entrando na pasta do projeto
+        run: ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
+
       - name: Instalando dependências
-        run: npm install
-        working-directory: minha-pgats-aprogramacao-js/testes
+        run: 
+          cd ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
+          yarn
 
-      - name: Instalando navegadores do Playwright
-        run: npx playwright install
-        working-directory: minha-pgats-aprogramacao-js/testes
+      - name: Instalando Playwright
+        run: 
+          cd ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
+          yarn playwright install
 
-      - name: Rodando os testes
-        run: npx playwright test
-        working-directory: minha-pgats-aprogramacao-js/testes
+      - name: Executando Testes E2E
+        run: 
+          cd ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
+          yarn run e2e
