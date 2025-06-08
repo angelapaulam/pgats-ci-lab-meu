@@ -17,5 +17,5 @@ jobs:
           node-version: 22.x
 
       - name: Executar trabalho-final.js
-        run: node ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
-        working-directory: ./posautomacao
+        run: node minha-pgats-aprogramacao-js/testes/trabalho-final.js
+        working-directory: ../posautomacao
