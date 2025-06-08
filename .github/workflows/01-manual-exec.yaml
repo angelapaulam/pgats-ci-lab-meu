@@ -1,4 +1,4 @@
-name: 'Execução Manual trabalho final'
+name: 'Execução Manual Trabalho Final'
 
 on:
   workflow_dispatch:
@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Checkout do repositório principal
+      # 1) Checkout do repositório principal (pgats-ci-lab-meu)
       - name: Checkout principal
         uses: actions/checkout@v4
 
       # 2) Checkout do repositório que contém os testes
-      - name: Checkout do repositório de testes
+      - name: Checkout do repo de testes
         uses: actions/checkout@v4
         with:
           repository: angelapaulam/minha-pgats-aprogramacao-js
@@ -25,15 +25,6 @@ jobs:
         with:
           node-version: '22.x'
 
-      # 4) Instalar dependências e navegadores Playwright na pasta de testes
-      - name: Instalando dependências e Playwright
-        run: |
-          cd minha-pgats-aprogramacao-js/testes
-          yarn
-          npx playwright install
-
-      # 5) Executar o script trabalho-final.js
+      # 4) Executar o script trabalho-final.js
       - name: Executar trabalho-final.js
-        run: |
-          cd minha-pgats-aprogramacao-js/testes
-          node trabalho-final.js
+        run: node minha-pgats-aprogramacao-js/testes/trabalho-final.js
