@@ -12,7 +12,7 @@ jobs:
       - name: Checkout principal
         uses: actions/checkout@v4
 
-      # 2) **Faz checkout** do repositório onde estão seus testes
+      # 2) Faz checkout do repositório onde estão seus testes
       - name: Checkout do repo de testes
         uses: actions/checkout@v4
         with:
@@ -25,6 +25,24 @@ jobs:
         with:
           node-version: '22.x'
 
-      # 4) Executa o seu script diretamente a partir da raiz do workspace
+      # 4) Instala Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
+        working-directory: minha-pgats-aprogramacao-js/testes
+
+      # 5) Instala as dependências do projeto de testes
+      - name: Instalando Yarn
+        run: yarn
+        working-directory: minha-pgats-aprogramacao-js/testes
+
+      # 6) Executa o seu script diretamente a partir da raiz do workspace
       - name: Executar trabalho-final.js
-        run: node minha-pgats-aprogramacao-js/testes/trabalho-final.js
+        run: node trabalho-final.js
+        working-directory: minha-pgats-aprogramacao-js/testes
+
+
+      - name: Instalando Yarn
+        run: 
+
+      - name: Instalando dependências
+        run: 
