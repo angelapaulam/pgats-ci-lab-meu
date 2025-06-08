@@ -8,24 +8,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Faz checkout do repositório principal (pgats-ci-lab-meu)
-      - name: Checkout principal
-        uses: actions/checkout@v4
+      # 1) Puxa TODO o repositório
+      - uses: actions/checkout@v4
 
-      # 2) Faz checkout do repositório onde estão seus testes
-      - name: Checkout do repo de testes
-        uses: actions/checkout@v4
-        with:
-          repository: angelapaulam/minha-pgats-aprogramacao-js
-          path: minha-pgats-aprogramacao-js
-
-      # 3) Prepara o Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      # 2) Prepara o Node.js
+      - uses: actions/setup-node@v4
         with:
           node-version: '22.x'
           
-      # 5) Executa o seu script diretamente a partir da raiz do workspace
+      # 3) Instala as dependências (onde está o package.json)
+      - name: Instalando dependências
+        run: npm install
+        working-directory: minha-pgats-aprogramacao-js
+
+      # 4) Executa o script trabalho-final.js
       - name: Executar trabalho-final.js
-        run: node trabalho-final.js
-        working-directory: minha-pgats-aprogramacao-js/testes
+        run: node testes/trabalho-final.js
+        working-directory: minha-pgats-aprogramacao-js
