@@ -1,10 +1,10 @@
-name: 'Execução Manual Trabalho-Final'
+name: Executar Teste Trabalho Final
 
 on:
   workflow_dispatch:
 
 jobs:
-  e2e-tests:
+  playwright-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,17 +14,14 @@ jobs:
         with:
           node-version: 22.x
 
-      - name: Instalando Yarn
-        run: npm install -g yarn
-        
       - name: Instalando dependências
-        run: yarn
-        working-directory: ../minha-pgats-aprogramacao-js/testes
+        run: npm install
+        working-directory: pgats-aprogramacao-js
 
-      - name: Instalando Playwright
-        run: yarn playwright install
-        working-directory: ../minha-pgats-aprogramacao-js/testes
+      - name: Instalando navegadores do Playwright
+        run: npx playwright install
+        working-directory: pgats-aprogramacao-js
 
-      - name: Executando Testes E2E
-        run: yarn run e2e
-        working-directory: ../minha-pgats-aprogramacao-js/testes
+      - name: Executando teste específico da pasta 'testes'
+        run: npx playwright test testes
+        working-directory: pgats-aprogramacao-js
