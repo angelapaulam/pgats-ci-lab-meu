@@ -12,25 +12,17 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22.x
-
-      - name: Instalando Yarn
-        run: npm install -g yarn
-
-      - name: Entrando na pasta do projeto
-        run: ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
-
+          repository: posautomacao/minha-pgats-aprogramacao-js
+          path: minha-pgats-aprogramacao-js
+          
       - name: Instalando dependências
-        run: 
-          cd ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
-          yarn
+        run: npm install
+        working-directory: minha-pgats-aprogramacao-js/testes
 
-      - name: Instalando Playwright
-        run: 
-          cd ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
-          yarn playwright install
+      - name: Instalando navegadores do Playwright
+        run: npx playwright install
+        working-directory: minha-pgats-aprogramacao-js/testes
 
-      - name: Executando Testes E2E
-        run: 
-          cd ../minha-pgats-aprogramacao-js/testes/trabalho-final.js
-          yarn run e2e
+      - name: Rodando os testes
+        run: npx playwright test
+        working-directory: minha-pgats-aprogramacao-js/testes
