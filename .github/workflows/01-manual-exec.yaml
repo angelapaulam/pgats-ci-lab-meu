@@ -1,4 +1,4 @@
-name: 'Execução Manual teste'
+name: 'Execução Manual trabalho final'
 
 on:
   workflow_dispatch:
@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Checkout do repositório principal (onde este workflow está)
-      - name: Checkout do repositório principal
+      # 1) Checkout do repositório principal
+      - name: Checkout principal
         uses: actions/checkout@v4
 
       # 2) Checkout do repositório que contém os testes
@@ -18,25 +18,22 @@ jobs:
         with:
           repository: angelapaulam/minha-pgats-aprogramacao-js
           path: minha-pgats-aprogramacao-js
-          
+
       # 3) Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: '22.x'
 
-      # 4) Instalar dependências (caso precise)
-      - name: Instalando dependências do projeto de testes
+      # 4) Instalar dependências e navegadores Playwright na pasta de testes
+      - name: Instalando dependências e Playwright
         run: |
+          cd minha-pgats-aprogramacao-js/testes
           yarn
-        working-directory: minha-pgats-aprogramacao-js/testes
+          npx playwright install
 
-      # 5) Instalar navegadores do Playwright
-      - name: Instalando Playwright
-        run: npx playwright install
-        working-directory: minha-pgats-aprogramacao-js/testes
-
-      # 6) Executar o script trabalho-final.js
+      # 5) Executar o script trabalho-final.js
       - name: Executar trabalho-final.js
-        run: node trabalho-final.js
-        working-directory: minha-pgats-aprogramacao-js/testes
+        run: |
+          cd minha-pgats-aprogramacao-js/testes
+          node trabalho-final.js
