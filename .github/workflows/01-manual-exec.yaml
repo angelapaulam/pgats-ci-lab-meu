@@ -16,7 +16,7 @@ jobs:
       - name: Checkout do repo de testes
         uses: actions/checkout@v4
         with:
-          repository: posautomacao/minha-pgats-aprogramacao-js
+          repository: angelapaulam/minha-pgats-aprogramacao-js
           path: minha-pgats-aprogramacao-js
 
       # 3) Prepara o Node.js
