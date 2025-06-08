@@ -16,10 +16,9 @@ jobs:
       - name: Checkout do repositório de testes
         uses: actions/checkout@v4
         with:
-          repository: usuario/minha-pgats-aprogramacao-js
+          repository: posautomacao/minha-pgats-aprogramacao-js
           path: minha-pgats-aprogramacao-js
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
+          
       - name: Instalando dependências
         run: npm install
         working-directory: minha-pgats-aprogramacao-js/testes
