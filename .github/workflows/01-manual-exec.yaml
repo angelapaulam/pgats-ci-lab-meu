@@ -16,21 +16,15 @@ jobs:
 
       - name: Instalando Yarn
         run: npm install -g yarn
-
-      - name: Entrando na pasta do projeto
-        run: ../cd minha-pgats-aprogramacao-js/testes
-
+        
       - name: Instalando dependências
-        run: |
-          cd ../minha-pgats-aprogramacao-js/testes
-          yarn
+        run: yarn
+        working-directory: ../minha-pgats-aprogramacao-js/testes
 
       - name: Instalando Playwright
-        run: |
-          cd ../minha-pgats-aprogramacao-js/testes
-          yarn playwright install
+        run: yarn playwright install
+        working-directory: ../minha-pgats-aprogramacao-js/testes
 
       - name: Executando Testes E2E
-        run: |
-          cd ../minha-pgats-aprogramacao-js/testes
-          yarn run e2e
+        run: yarn run e2e
+        working-directory: ../minha-pgats-aprogramacao-js/testes
