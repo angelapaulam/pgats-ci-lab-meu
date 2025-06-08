@@ -39,10 +39,3 @@ jobs:
       - name: Executar trabalho-final.js
         run: node trabalho-final.js
         working-directory: minha-pgats-aprogramacao-js/testes
-
-
-      - name: Instalando Yarn
-        run: 
-
-      - name: Instalando dependências
-        run: 
