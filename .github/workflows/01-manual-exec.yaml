@@ -1,10 +1,10 @@
-name: Executar Teste Trabalho Final
+name: Executar código de outra pasta
 
 on:
   workflow_dispatch:
 
 jobs:
-  playwright-test:
+  executar-teste:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,14 +14,14 @@ jobs:
         with:
           node-version: 22.x
 
-      - name: Instalando dependências
+      - name: Instalando dependências no projeto de destino
         run: npm install
-        working-directory: pgats-aprogramacao-js
+        working-directory: ../minha-pgats-aprogramacao-js/testes
 
-      - name: Instalando navegadores do Playwright
+      - name: Instalando navegadores Playwright
         run: npx playwright install
-        working-directory: pgats-aprogramacao-js
+        working-directory: ../minha-pgats-aprogramacao-js/testes
 
-      - name: Executando teste específico da pasta 'testes'
-        run: npx playwright test testes
-        working-directory: pgats-aprogramacao-js
+      - name: Executando testes
+        run: npx playwright test
+        working-directory: ../minha-pgats-aprogramacao-js/testes
