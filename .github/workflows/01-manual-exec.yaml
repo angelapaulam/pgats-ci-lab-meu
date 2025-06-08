@@ -24,12 +24,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-
-      # 4) Instala as dependências do projeto de testes
-      - name: Instalando dependências
-        run: npm install
-        working-directory: minha-pgats-aprogramacao-js/testes
-
+          
       # 5) Executa o seu script diretamente a partir da raiz do workspace
       - name: Executar trabalho-final.js
         run: node trabalho-final.js
