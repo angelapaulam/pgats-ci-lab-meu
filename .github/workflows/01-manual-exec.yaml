@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 name: 'Execução Manual teste1'
+=======
+name: Executar Testes JS
+>>>>>>> ccbc2c6594a368eb0c86701f35e9dbe5342cac30
 
 on:
   workflow_dispatch:
 
 jobs:
-  e2e-tests:
+  run-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,14 +18,6 @@ jobs:
         with:
           node-version: 22.x
 
-      - name: Instalando Yarn
-        run: npm install -g yarn
-
-      - name: Instalando dependências
-        run: yarn
-
-      - name: Instalando Playwright
-        run: yarn playwright install
-
-      - name: Executando Testes E2E
-        run: yarn run e2e
+      - name: Executando script de testes
+        run: node index.js
+        working-directory: minha-pgats-aprogramacao-js/testes
