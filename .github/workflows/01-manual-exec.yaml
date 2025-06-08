@@ -1,27 +1,33 @@
-name: Executar código de outra pasta
+name: Rodar Testes de Outro Repositório
 
 on:
   workflow_dispatch:
 
 jobs:
-  executar-teste:
+  executar-testes:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # Checkout do repositório atual (pgats-ci-lab-meu)
+      - name: Checkout do repositório principal
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      # Checkout do repositório com os testes (minha-pgats-aprogramacao-js)
+      - name: Checkout do repositório de testes
+        uses: actions/checkout@v4
         with:
-          node-version: 22.x
+          repository: usuario/minha-pgats-aprogramacao-js
+          path: minha-pgats-aprogramacao-js
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
 
-      - name: Instalando dependências no projeto de destino
+      - name: Instalando dependências
         run: npm install
-        working-directory: ../minha-pgats-aprogramacao-js/testes
+        working-directory: minha-pgats-aprogramacao-js/testes
 
-      - name: Instalando navegadores Playwright
+      - name: Instalando navegadores do Playwright
         run: npx playwright install
-        working-directory: ../minha-pgats-aprogramacao-js/testes
+        working-directory: minha-pgats-aprogramacao-js/testes
 
-      - name: Executando testes
+      - name: Rodando os testes
         run: npx playwright test
-        working-directory: ../minha-pgats-aprogramacao-js/testes
+        working-directory: minha-pgats-aprogramacao-js/testes
