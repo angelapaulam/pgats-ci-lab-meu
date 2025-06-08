@@ -1,4 +1,4 @@
-name: 'Execução Manual Trabalho Final'
+name: 'Execução Manual teste'
 
 on:
   workflow_dispatch:
@@ -8,14 +8,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1) Faz checkout de TODO o repositório posautomacao
-      - uses: actions/checkout@v4
+      # 1) Faz checkout do repositório principal (pgats-ci-lab-meu)
+      - name: Checkout principal
+        uses: actions/checkout@v4
 
-      # 2) Prepara o Node.js
-      - uses: actions/setup-node@v4
+      # 2) **Faz checkout** do repositório onde estão seus testes
+      - name: Checkout do repo de testes
+        uses: actions/checkout@v4
+        with:
+          repository: angelapaulam/minha-pgats-aprogramacao-js
+          path: minha-pgats-aprogramacao-js
+
+      # 3) Prepara o Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '22.x'
 
-      # 3) Executa o script trabalho-final.js a partir da raiz
+      # 4) Executa o seu script diretamente a partir da raiz do workspace
       - name: Executar trabalho-final.js
         run: node minha-pgats-aprogramacao-js/testes/trabalho-final.js
