@@ -1,4 +1,4 @@
-name: 'Execução Manual Trabalho Final'
+name: 'Execução Manual Trabalho-Final'
 
 on:
   workflow_dispatch:
