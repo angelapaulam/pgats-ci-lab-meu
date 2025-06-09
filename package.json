@@ -16,7 +16,7 @@
     "test:mutation": "npx stryker run",
     "start": "lite-server",
     "e2e": "npx playwright test",
-    "test:final": "node --experimental-vm-modules node_modules/jest/bin/jest.js testes/trabalho-final.test.js --passWithNoTests"
+    "test:final": "node --experimental-vm-modules node_modules/jest/bin/jest.js testes/trabalho-final.test.js --passWithNoTests --config jest.config.cjs"
   },
   "keywords": [],
   "author": "",
