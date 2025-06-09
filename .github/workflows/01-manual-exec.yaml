@@ -4,24 +4,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  e2e-tests:
+  rodar-trabalho-final:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22.x
 
-      - name: Instalando Yarn
-        run: npm install -g yarn
+      - name: Instalar dependências (caso tenha package.json)
+        run: |
+          if [ -f "package.json" ]; then
+            yarn install || npm install
+          else
+            echo "Nenhum package.json encontrado, pulando instalação de dependências."
+          fi
 
-      - name: Instalando dependências
-        run: yarn
+      - name: Verificar estrutura de pastas
+        run: ls -R
 
-      - name: Instalando Playwright
-        run: yarn playwright install
-
-      - name: Executando trabalho-final.js
+      - name: Executar trabalho-final.js
         run: node testes/trabalho-final.js
