@@ -16,8 +16,13 @@ jobs:
         with:
           node-version: '22.x'
 
+      - name: Criar setup.js vazio para Jest (workaround)
+        run: |
+          mkdir -p test
+          echo "" > test/setup.js
+
       - name: Instalando dependências
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Rodando trabalho-final.js com Jest
         run: npm test -- testes/trabalho-final.js
