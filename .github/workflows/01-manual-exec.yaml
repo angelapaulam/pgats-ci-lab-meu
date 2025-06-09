@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  trabalho-final:
+  e2e-tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
           node-version: 22.x
 
       # Instala dependências
-      - name: Instalar dependências
+      - name: Instalar dependências (com --legacy-peer-deps para evitar conflitos)
         run: npm install --legacy-peer-deps
 
       # Instala Playwright

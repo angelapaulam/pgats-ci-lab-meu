@@ -13,10 +13,10 @@
     "lint:ts": "tsc -b jsconfig.json",
     "lint:format": "prettier --check --ignore-path .gitignore .",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:final": "node --experimental-vm-modules node_modules/jest/bin/jest.js testes/trabalho-final.js --passWithNoTests",
     "test:mutation": "npx stryker run",
     "start": "lite-server",
-    "e2e": "npx playwright test"
+    "e2e": "npx playwright test",
+    "test:final": "node --experimental-vm-modules node_modules/jest/bin/jest.js testes/trabalho-final.test.js --passWithNoTests"
   },
   "keywords": [],
   "author": "",
@@ -34,5 +34,9 @@
     "prettier": "^3.2.4",
     "typescript": "^5.3.3",
     "whatwg-fetch": "^3.6.20"
+  },
+  "jest": {
+    "testMatch": ["**/testes/**/*.test.js"],
+    "transform": {}
   }
 }
