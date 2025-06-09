@@ -4,25 +4,28 @@ on:
   workflow_dispatch:
 
 jobs:
-  executar-trabalho-final:
+  trabalho-final:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout do repositório
       - name: Checkout do repositório
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      # Setup Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '22.x'
+          node-version: 22.x
 
-      - name: Criar setup.js vazio para Jest (workaround)
-        run: |
-          mkdir -p test
-          echo "" > test/setup.js
-
-      - name: Instalando dependências
+      # Instala dependências
+      - name: Instalar dependências
         run: npm install --legacy-peer-deps
 
-      - name: Rodando trabalho-final.js com Jest
-        run: npm test -- testes/trabalho-final.js
+      # Instala Playwright
+      - name: Instalar Playwright
+        run: npx playwright install
+
+      # Executa o teste final
+      - name: Executar testes do trabalho final
+        run: npm run test:final

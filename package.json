@@ -13,6 +13,7 @@
     "lint:ts": "tsc -b jsconfig.json",
     "lint:format": "prettier --check --ignore-path .gitignore .",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:final": "node --experimental-vm-modules node_modules/jest/bin/jest.js testes/trabalho-final.js --passWithNoTests",
     "test:mutation": "npx stryker run",
     "start": "lite-server",
     "e2e": "npx playwright test"
